@@ -2,6 +2,26 @@
 namespace App\Controller;
 
 class FilmsController extends AppController {
+    // query using model relationship
+    public function films() {
+        $films = $this->Films
+        ->find('all', ['contain' => ['Actors']])
+        ->where(['film_id IN' => [1,2,3]]);
+        
+        // dd($films->all());
+        
+        foreach($films as $film) {
+            echo "<b> {$film->title} </b> <br>";
+            foreach ($film->actors as $actor) {
+                echo $actor->first_name . '<br>';
+            }
+            echo '<hr>';
+        }
+
+        die('');
+    }
+
+
     public function index() {
         $films = $this->Films->find()->where(['title LIKE' => "%dark%"]);
         // dd($films->all());

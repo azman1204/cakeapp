@@ -27,12 +27,29 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     </title>
     <?= $this->Html->meta('icon') ?>
 
-    <?= $this->Html->css('base.css') ?>
-    <?= $this->Html->css('style.css') ?>
+    <?php // $this->Html->css('base.css') ?>
+    <?php // $this->Html->css('style.css') ?>
+    <?php
+    echo $this->Html->css('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css');
+    echo $this->Html->script([
+        'https://code.jquery.com/jquery-1.12.4.min.js',
+        'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'
+    ]);
+    ?>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
+
+    <style>
+    .error-message {
+        color: red;
+    }
+
+    .error input {
+        border: 1px solid red;
+    }
+    </style>
 </head>
 <body>
     <nav class="top-bar expanded" data-topbar role="navigation">

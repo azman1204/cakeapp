@@ -2,6 +2,20 @@
 namespace App\Controller;
 
 class FilmsController extends AppController {
+    
+
+    // search yg menggunakan friendsofcake/search
+    public function search() {
+        debug($this->request->getQuery());
+        $query = $this->Films->find('search', [
+            'search' => $this->request->getQuery()
+        ]);
+        
+        debug($query);
+        debug($query->all());
+        die();
+    }
+
     // query using model relationship
     public function films() {
         $films = $this->Films
